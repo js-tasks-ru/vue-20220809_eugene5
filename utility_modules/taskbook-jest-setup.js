@@ -1,3 +1,3 @@
-const { getSolutionPath } = require('./taskbook-test-utils');
+const { getSolutionPath } = require('./taskbook-test-utils')
 
-global.getSolutionPath = getSolutionPath;
+global.getSolutionPath = getSolutionPath

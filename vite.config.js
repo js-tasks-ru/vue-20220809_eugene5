@@ -1,10 +1,10 @@
-const fs = require('fs');
-const { join, resolve, extname } = require('path');
-const { fileURLToPath, URL, parse } = require('url');
+const fs = require('fs')
+const { join, resolve, extname } = require('path')
+const { fileURLToPath, URL, parse } = require('url')
 
-const { defineConfig } = require('vite');
-const vue = require('@vitejs/plugin-vue');
-const vueJsx = require('@vitejs/plugin-vue-jsx');
+const { defineConfig } = require('vite')
+const vue = require('@vitejs/plugin-vue')
+const vueJsx = require('@vitejs/plugin-vue-jsx')
 
 /**
  * @param {string} taskDir - Path to task directory in Taskbook, e.g. 0-module/1-task
@@ -12,10 +12,10 @@ const vueJsx = require('@vitejs/plugin-vue-jsx');
  */
 function joinTaskSourceDir(taskDir) {
   if (process.env.TASK_DEV) {
-    const sourceDirname = process.env.SOLUTION ? 'solution' : 'src';
-    return `${taskDir}/${sourceDirname}`;
+    const sourceDirname = process.env.SOLUTION ? 'solution' : 'src'
+    return `${taskDir}/${sourceDirname}`
   }
-  return taskDir;
+  return taskDir
 }
 
 /**
@@ -31,9 +31,9 @@ function joinTaskSourceDir(taskDir) {
  * @returns {Task[]} Array of tasks data
  */
 function discoverTaskDirs(rootDir = __dirname) {
-  const isDir = (filepath) => fs.lstatSync(filepath).isDirectory();
-  const getSubDirs = (dir) => fs.readdirSync(dir).filter((name) => isDir(join(dir, name)));
-  const isModuleOrTaskDir = (dirname) => /^\d+-/.test(dirname);
+  const isDir = (filepath) => fs.lstatSync(filepath).isDirectory()
+  const getSubDirs = (dir) => fs.readdirSync(dir).filter((name) => isDir(join(dir, name)))
+  const isModuleOrTaskDir = (dirname) => /^\d+-/.test(dirname)
 
   return getSubDirs(rootDir)
     .filter(isModuleOrTaskDir)
@@ -41,7 +41,7 @@ function discoverTaskDirs(rootDir = __dirname) {
       getSubDirs(join(rootDir, module))
         .filter(isModuleOrTaskDir)
         .map((task) => ({ module, task, path: `${module}/${task}` })),
-    );
+    )
 }
 
 /**
@@ -52,9 +52,9 @@ function discoverTaskDirs(rootDir = __dirname) {
  */
 function generatePagesConfig(taskList) {
   return taskList.reduce((pages, { module, task, path }) => {
-    pages[`${module}/${task}`] = resolve(join(__dirname, joinTaskSourceDir(path)), 'index.html');
-    return pages;
-  }, {});
+    pages[`${module}/${task}`] = resolve(join(__dirname, joinTaskSourceDir(path)), 'index.html')
+    return pages
+  }, {})
 }
 
 /**
@@ -67,27 +67,27 @@ function devServerMultiPageSpa() {
     name: 'dev-server-multi-page-spa',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const rollupOptionsInput = server.config.build.rollupOptions.input;
+        const rollupOptionsInput = server.config.build.rollupOptions.input
         if (!rollupOptionsInput) {
-          return next();
+          return next()
         }
 
-        const pathname = parse(req.url).pathname;
+        const pathname = parse(req.url).pathname
 
-        const isFile = !!extname(pathname);
+        const isFile = !!extname(pathname)
         if (isFile) {
-          return next();
+          return next()
         }
 
-        const page = Object.keys(rollupOptionsInput).find((page) => pathname.startsWith(`/${page}`));
+        const page = Object.keys(rollupOptionsInput).find((page) => pathname.startsWith(`/${page}`))
         if (page) {
-          req.url = `/${page}/index.html`;
+          req.url = `/${page}/index.html`
         }
 
-        next();
-      });
+        next()
+      })
     },
-  };
+  }
 }
 
 /**
@@ -98,29 +98,29 @@ function devServerMultiPageSpa() {
 const taskbookDevSourceRewrite = (tasks) => {
   // Ignore production
   if (!process.env.TASK_DEV) {
-    return false;
+    return false
   }
 
   return {
     name: 'taskbook-dev-source-rewrite',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const pathname = parse(req.url).pathname;
-        const task = tasks.find(({ module, task }) => pathname.startsWith(`/${module}/${task}/`));
+        const pathname = parse(req.url).pathname
+        const task = tasks.find(({ module, task }) => pathname.startsWith(`/${module}/${task}/`))
         if (task) {
-          const sourcePath = joinTaskSourceDir(task.path);
+          const sourcePath = joinTaskSourceDir(task.path)
           if (!req.url.includes(sourcePath)) {
-            req.url = req.url.replace(task.path, sourcePath);
+            req.url = req.url.replace(task.path, sourcePath)
           }
         }
-        next();
-      });
+        next()
+      })
     },
-  };
-};
+  }
+}
 
 // All tasks for Taskbook's Index page
-const tasks = discoverTaskDirs(__dirname);
+const tasks = discoverTaskDirs(__dirname)
 
 module.exports = defineConfig({
   plugins: [devServerMultiPageSpa(), taskbookDevSourceRewrite(tasks), vue(), vueJsx()],
@@ -151,4 +151,4 @@ module.exports = defineConfig({
       },
     },
   },
-});
+})

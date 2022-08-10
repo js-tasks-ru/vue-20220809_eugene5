@@ -4,7 +4,7 @@
  * @param {AggregatedResultWithoutCoverage} report
  */
 const taskbookTestResultsProcessor = (report) => {
-  const results = [];
+  const results = []
 
   report.testResults.forEach((testCase) => {
     testCase.testResults.forEach((result) => {
@@ -13,9 +13,9 @@ const taskbookTestResultsProcessor = (report) => {
         success: result.status === 'passed',
         suite: result.ancestorTitles,
         time: result.duration,
-      });
-    });
-  });
+      })
+    })
+  })
 
   const ciReport = {
     result: {
@@ -25,15 +25,15 @@ const taskbookTestResultsProcessor = (report) => {
       success: report.numPassedTestSuites,
       failed: report.numFailedTestSuites,
     },
-  };
-
-  if (ciReport.summary.failed) {
-    console.error(JSON.stringify(ciReport));
-  } else {
-    console.log(JSON.stringify(ciReport));
   }
 
-  return report;
-};
+  if (ciReport.summary.failed) {
+    console.error(JSON.stringify(ciReport))
+  } else {
+    console.log(JSON.stringify(ciReport))
+  }
 
-module.exports = taskbookTestResultsProcessor;
+  return report
+}
+
+module.exports = taskbookTestResultsProcessor

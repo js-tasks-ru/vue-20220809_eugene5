@@ -20,21 +20,21 @@
 
 <script>
 /** @type {Array<Object>} */
-const tasks = import.meta.env.TASKBOOK_TASKS;
+const tasks = import.meta.env.TASKBOOK_TASKS
 
 export default {
   setup() {
     return {
       taskTree: tasks.reduce((result, unit) => {
         if (!result[unit.module]) {
-          result[unit.module] = [];
+          result[unit.module] = []
         }
-        result[unit.module].push(unit);
-        return result;
+        result[unit.module].push(unit)
+        return result
       }, {}),
-    };
+    }
   },
-};
+}
 </script>
 
 <style>

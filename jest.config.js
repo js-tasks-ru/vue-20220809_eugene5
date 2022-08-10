@@ -43,14 +43,14 @@ const config = {
   },
 
   clearMocks: true,
-};
+}
 
 // Legacy config for Taskbook Monitor Generator
 if (process.env.TASK_MONITOR) {
   Object.assign(config, {
     testResultsProcessor: '<rootDir>/utility_modules/taskbook-test-results-processor.js',
     reporters: [],
-  });
+  })
 }
 
-module.exports = config;
+module.exports = config

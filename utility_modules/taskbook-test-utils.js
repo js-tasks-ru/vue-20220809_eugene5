@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 /**
  * Returns real path to testing module depend on environment.
@@ -9,9 +9,9 @@ const path = require('path');
  * @return {string} Real relative path to testing module from test
  */
 function getSolutionPath(modulePath) {
-  return process.env.SOLUTION ? path.join('..', '..', 'solution', modulePath) : path.join('..', modulePath);
+  return process.env.SOLUTION ? path.join('..', '..', 'solution', modulePath) : path.join('..', modulePath)
 }
 
 module.exports = {
   getSolutionPath,
-};
+}
