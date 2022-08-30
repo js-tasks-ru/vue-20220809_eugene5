@@ -1,4 +1,4 @@
-// import { createApp } from './vendor/vue.esm-browser.js';
+import { createApp } from './vendor/vue.esm-browser.js'
 
 // From https://jsonplaceholder.typicode.com/comments
 const emails = [
@@ -27,6 +27,28 @@ const emails = [
   'Sophia@arianna.co.uk',
   'Jeffery@juwan.us',
   'Isaias_Kuhic@jarrett.net',
-];
+]
 
 // Требуется создать Vue приложение
+createApp({
+  data() {
+    return { emails: emails, suggest: '' }
+  },
+  computed: {
+    filteredEmails() {
+      return this.emails.reduce((acc, email) => {
+        let marked = false
+
+        if (this.suggest) {
+          marked = email.toLocaleLowerCase().includes(this.suggest.toLocaleLowerCase())
+        }
+
+        acc.push({
+          email,
+          marked,
+        })
+        return acc
+      }, [])
+    },
+  },
+}).mount('#app')
