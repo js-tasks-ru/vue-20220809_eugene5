@@ -51,6 +51,7 @@ describe('components/MeetupInfo', () => {
     it('MeetupInfo должен выводить дату проведения митапа в третьем элементе списка в элементе <time> в соответствии с обновлённым параметром date', async () => {
       const wrapper = shallowMount(MeetupInfo, { props: { organizer, place, date } })
       await wrapper.setProps({ date: newDate })
+      navigator.language
       expect(wrapper.find('li:nth-child(3)').text()).toContain(
         new Date(newDate).toLocaleString(navigator.language, {
           year: 'numeric',
