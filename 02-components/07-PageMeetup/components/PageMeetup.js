@@ -1,6 +1,6 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
-import UiContainer from './UiContainer.js';
-import UiAlert from './UiAlert.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
+import UiContainer from './UiContainer.js'
+import UiAlert from './UiAlert.js'
 // import { fetchMeetupById } from './meetupService.js';
 
 export default defineComponent({
@@ -23,4 +23,4 @@ export default defineComponent({
         <UiAlert>error</UiAlert>
       </UiContainer>
     </div>`,
-});
+})

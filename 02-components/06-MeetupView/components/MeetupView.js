@@ -1,6 +1,6 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
-import UiAlert from './UiAlert.js';
-import UiContainer from './UiContainer.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
+import UiAlert from './UiAlert.js'
+import UiContainer from './UiContainer.js'
 
 export default defineComponent({
   name: 'MeetupView',
@@ -37,4 +37,4 @@ export default defineComponent({
         </div>
       </ui-container>
     </div>`,
-});
+})

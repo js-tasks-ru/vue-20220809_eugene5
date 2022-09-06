@@ -1,5 +1,5 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
-import PageMeetup from './components/PageMeetup.js';
+import { defineComponent } from './vendor/vue.esm-browser.js'
+import PageMeetup from './components/PageMeetup.js'
 
 export default defineComponent({
   name: 'App',
@@ -8,7 +8,7 @@ export default defineComponent({
   data() {
     return {
       meetupId: 1,
-    };
+    }
   },
 
   template: `
@@ -24,4 +24,4 @@ export default defineComponent({
       <PageMeetup :meetup-id="meetupId" />
     </div>
   `,
-});
+})

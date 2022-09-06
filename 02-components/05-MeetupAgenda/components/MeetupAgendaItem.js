@@ -1,4 +1,4 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
 // import { agendaItemIcons, agendaItemDefaultTitles } from './meetupService.js';
 
 export default defineComponent({
@@ -20,4 +20,4 @@ export default defineComponent({
         <p>Description</p>
       </div>
     </div>`,
-});
+})

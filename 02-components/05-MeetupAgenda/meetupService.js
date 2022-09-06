@@ -10,7 +10,7 @@ export const agendaItemDefaultTitles = {
   afterparty: 'Afterparty',
   talk: 'Доклад',
   other: 'Другое',
-};
+}
 
 /**
  * Словарь иконок для для всех типов пунктов программы.
@@ -25,4 +25,4 @@ export const agendaItemIcons = {
   closing: 'key',
   afterparty: 'cal-sm',
   other: 'cal-sm',
-};
+}

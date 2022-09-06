@@ -1,4 +1,4 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
 
 export default defineComponent({
   name: 'MeetupCover',
@@ -9,4 +9,4 @@ export default defineComponent({
         <!-- Изображение по умолчанию уже есть в стилях. Для его вывода достаточно не добавлять никаких стилей. -->
         <h1 class="meetup-cover__title">Title</h1>
     </div>`,
-});
+})

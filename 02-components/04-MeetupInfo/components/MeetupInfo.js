@@ -1,4 +1,4 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
 
 export default defineComponent({
   name: 'MeetupInfo',
@@ -18,4 +18,4 @@ export default defineComponent({
         <time datetime="2020-01-01">1 янв. 2020</time>
       </li>
     </ul>`,
-});
+})

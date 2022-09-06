@@ -1,4 +1,4 @@
-import { defineComponent } from '../vendor/vue.esm-browser.js';
+import { defineComponent } from '../vendor/vue.esm-browser.js'
 
 export default defineComponent({
   name: 'UiContainer',
@@ -7,4 +7,4 @@ export default defineComponent({
     <div class="container">
       <slot />
     </div>`,
-});
+})
