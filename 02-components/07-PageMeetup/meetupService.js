@@ -1,4 +1,4 @@
-import meetups from './api/meetups.js';
+import meetups from './api/meetups.js'
 
 /**
  * Получение данных митапа по Meetup ID с API
@@ -9,13 +9,13 @@ import meetups from './api/meetups.js';
 export async function fetchMeetupById(meetupId) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const meetup = meetups.find((meetup) => meetup.id === meetupId);
+      const meetup = meetups.find((meetup) => meetup.id === meetupId)
       if (!meetup) {
-        reject(new Error('Not found'));
+        reject(new Error('Not found'))
       }
-      resolve(meetup);
-    }, 500);
-  });
+      resolve(meetup)
+    }, 500)
+  })
 }
 
 /**
@@ -30,7 +30,7 @@ export const agendaItemDefaultTitles = {
   afterparty: 'Afterparty',
   talk: 'Доклад',
   other: 'Другое',
-};
+}
 
 /**
  * Словарь иконок для для всех типов пунктов программы.
@@ -45,4 +45,4 @@ export const agendaItemIcons = {
   closing: 'key',
   afterparty: 'cal-sm',
   other: 'cal-sm',
-};
+}

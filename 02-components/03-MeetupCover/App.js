@@ -1,5 +1,5 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
-import MeetupCover from './components/MeetupCover.js';
+import { defineComponent } from './vendor/vue.esm-browser.js'
+import MeetupCover from './components/MeetupCover.js'
 
 export default defineComponent({
   name: 'App',
@@ -18,7 +18,7 @@ export default defineComponent({
         title: 'Demo meetup',
         image: null,
       },
-    };
+    }
   },
 
   template: `
@@ -32,4 +32,4 @@ export default defineComponent({
       <MeetupCover :title="meetupWithoutImage.title" :image="meetupWithoutImage.image" />
     </div>
   `,
-});
+})

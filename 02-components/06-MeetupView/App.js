@@ -1,6 +1,6 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
-import MeetupView from './components/MeetupView.js';
-import meetups from './api/meetups.js';
+import { defineComponent } from './vendor/vue.esm-browser.js'
+import MeetupView from './components/MeetupView.js'
+import meetups from './api/meetups.js'
 
 export default defineComponent({
   name: 'App',
@@ -12,7 +12,7 @@ export default defineComponent({
   data() {
     return {
       meetup: meetups[2],
-    };
+    }
   },
 
   template: `
@@ -20,4 +20,4 @@ export default defineComponent({
       <MeetupView :meetup="meetup" />
     </div>
   `,
-});
+})

@@ -1,5 +1,5 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
-import CounterButton from './CounterButton.js';
+import { defineComponent } from './vendor/vue.esm-browser.js'
+import CounterButton from './CounterButton.js'
 
 export default defineComponent({
   name: 'App',
@@ -11,7 +11,7 @@ export default defineComponent({
   data() {
     return {
       count: undefined,
-    };
+    }
   },
 
   template: `
@@ -28,4 +28,4 @@ export default defineComponent({
       </p>
     </div>
   `,
-});
+})

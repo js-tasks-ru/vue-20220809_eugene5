@@ -1,6 +1,6 @@
-import { defineComponent } from './vendor/vue.esm-browser.js';
-import meetups from './api/meetups.js';
-import MeetupDescription from './components/MeetupDescription.js';
+import { defineComponent } from './vendor/vue.esm-browser.js'
+import meetups from './api/meetups.js'
+import MeetupDescription from './components/MeetupDescription.js'
 
 export default defineComponent({
   name: 'App',
@@ -13,12 +13,12 @@ export default defineComponent({
     return {
       meetups,
       selectedMeetup: 0,
-    };
+    }
   },
 
   computed: {
     description() {
-      return this.meetups[this.selectedMeetup].description;
+      return this.meetups[this.selectedMeetup].description
     },
   },
 
@@ -37,4 +37,4 @@ export default defineComponent({
       <MeetupDescription :description="description" />
     </div>
   `,
-});
+})
